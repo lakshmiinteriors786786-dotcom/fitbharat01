@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBharat | AI Wellness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="glass-header">
+            <div class="user-profile">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Manik" alt="Manik" class="avatar">
+                <div class="greeting">
+                    <p>Namaste, Manik 👋</p>
+                    <span>Ready to crush it?</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <i class="fa-solid fa-bell notification-dot"></i>
+            </div>
+        </header>
+
+        <main class="content-area">
+            
+            <section id="view-dashboard" class="view active">
+                <div class="ai-suggestion glass-card glow-blue">
+                    <div class="ai-icon"><i class="fa-solid fa-robot"></i></div>
+                    <p><strong>FitBot:</strong> You’re 80% closer to your goal! A 15-min Surya Namaskar will close your ring.</p>
+                </div>
+
+                <div class="health-score-container glass-card">
+                    <h3>FitBharat Score</h3>
+                    <p class="subtitle">Based on Activity, Sleep & Diet</p>
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="bg" cx="50" cy="50" r="40"></circle>
+                            <circle class="progress" cx="50" cy="50" r="40" id="score-circle"></circle>
+                        </svg>
+                        <div class="score-text">
+                            <span id="score-number">0</span>
+                            <span class="trend"><i class="fa-solid fa-arrow-trend-up"></i> 5%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card glass-card">
+                        <i class="fa-solid fa-shoe-prints text-orange"></i>
+                        <h4>8,432</h4>
+                        <p>Steps</p>
+                    </div>
+                    <div class="metric-card glass-card">
+                        <i class="fa-solid fa-fire text-orange"></i>
+                        <h4>450 kcal</h4>
+                        <p>Burned</p>
+                    </div>
+                    <div class="metric-card glass-card">
+                        <i class="fa-solid fa-moon text-blue"></i>
+                        <h4>7.5h</h4>
+                        <p>Sleep Score</p>
+                    </div>
+                    <div class="metric-card glass-card">
+                        <i class="fa-solid fa-bowl-rice text-green"></i>
+                        <h4>High Pro</h4>
+                        <p>Diet Quality</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-scanner" class="view hidden">
+                <div class="scanner-header">
+                    <h2>Meal Intelligence</h2>
+                    <p>Scan your Indian meal for instant macros</p>
+                </div>
+                <div class="camera-frame">
+                    <div class="scan-line hidden" id="scan-line"></div>
+                    <p class="camera-placeholder" id="camera-text"><i class="fa-solid fa-camera"></i><br>Aim at your meal</p>
+                </div>
+                <button class="capture-btn" id="capture-btn">
+                    <div class="inner-circle"></div>
+                </button>
+
+                <div class="result-modal glass-card hidden" id="scan-result">
+                    <h3>Detected: Paneer Tikka</h3>
+                    <div class="macro-breakdown">
+                        <div class="macro"><span>320</span><p>Kcal</p></div>
+                        <div class="macro text-green"><span>18g</span><p>Protein</p></div>
+                        <div class="macro"><span>8g</span><p>Carbs</p></div>
+                    </div>
+                    <button class="btn-primary" onclick="closeScanner()">Log Meal</button>
+                </div>
+            </section>
+
+            <section id="view-community" class="view hidden">
+                <div class="campus-header glass-card glow-green">
+                    <h2>Campus Wars</h2>
+                    <p>IIT Delhi vs The World</p>
+                </div>
+                
+                <div class="leaderboard">
+                    <div class="rank-item gold glass-card">
+                        <div class="rank">1</div>
+                        <div class="campus-info">
+                            <h4>IIT Delhi</h4>
+                            <p>1.2M Steps</p>
+                        </div>
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div class="rank-item silver glass-card">
+                        <div class="rank">2</div>
+                        <div class="campus-info">
+                            <h4>DTU</h4>
+                            <p>980K Steps</p>
+                        </div>
+                    </div>
+                    <div class="rank-item bronze glass-card">
+                        <div class="rank">3</div>
+                        <div class="campus-info">
+                            <h4>NSUT</h4>
+                            <p>850K Steps</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary challenge-btn"><i class="fa-solid fa-user-ninja"></i> Challenge a Friend</button>
+            </section>
+            <section id="view-workout" class="view hidden">
+                <div class="section-header">
+                    <h2>AI Virtual Trainer</h2>
+                    <p>Personalized routines based on your goals</p>
+                </div>
+
+                <div class="filter-tabs">
+                    <button class="tab active">For You</button>
+                    <button class="tab">Strength</button>
+                    <button class="tab">Yoga</button>
+                </div>
+
+                <div class="workout-list">
+                    <div class="workout-card glass-card">
+                        <div class="workout-info">
+                            <span class="badge-tag bg-orange-glow">Fat Loss</span>
+                            <h3>Desi HIIT Burn</h3>
+                            <p><i class="fa-solid fa-clock text-orange"></i> 20 Mins • High Intensity</p>
+                        </div>
+                        <button class="play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+
+                    <div class="workout-card glass-card">
+                        <div class="workout-info">
+                            <span class="badge-tag bg-blue-glow">Flexibility</span>
+                            <h3>Surya Namaskar Flow</h3>
+                            <p><i class="fa-solid fa-clock text-blue"></i> 15 Mins • Calming</p>
+                        </div>
+                        <button class="play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+
+                    <div class="workout-card glass-card">
+                        <div class="workout-info">
+                            <span class="badge-tag bg-green-glow">Muscle Gain</span>
+                            <h3>Home Pahalwan (Bodyweight)</h3>
+                            <p><i class="fa-solid fa-clock text-green"></i> 30 Mins • Strength</p>
+                        </div>
+                        <button class="play-btn"><i class="fa-solid fa-play"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-profile" class="view hidden">
+                <div class="profile-header text-center">
+                    <div class="profile-avatar-wrapper">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Manik" alt="Manik" class="avatar-large">
+                        <div class="level-badge">Lvl 12</div>
+                    </div>
+                    <h2>Manik Mehra</h2>
+                    <p class="text-blue font-bold">Fit Yodha (Warrior)</p>
+                </div>
+
+                <div class="profile-stats glass-card">
+                    <div class="stat-col">
+                        <h4>72</h4>
+                        <p>Weight (kg)</p>
+                    </div>
+                    <div class="stat-col border-sides">
+                        <h4>175</h4>
+                        <p>Height (cm)</p>
+                    </div>
+                    <div class="stat-col">
+                        <h4>23.5</h4>
+                        <p>BMI (Normal)</p>
+                    </div>
+                </div>
+
+                <div class="achievements-section">
+                    <h3 class="section-title">Recent Badges</h3>
+                    <div class="badges-row">
+                        <div class="badge-card glass-card">
+                            <i class="fa-solid fa-fire text-orange"></i>
+                            <p>7-Day Streak</p>
+                        </div>
+                        <div class="badge-card glass-card">
+                            <i class="fa-solid fa-sun text-saffron"></i>
+                            <p>Early Riser</p>
+                        </div>
+                        <div class="badge-card glass-card">
+                            <i class="fa-solid fa-shoe-prints text-green"></i>
+                            <p>10K Steps</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-list glass-card">
+                    <div class="setting-item">
+                        <div class="setting-label"><i class="fa-solid fa-bullseye text-orange"></i> Edit Goals</div>
+                        <i class="fa-solid fa-chevron-right text-muted"></i>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label"><i class="fa-solid fa-clock-rotate-left text-blue"></i> Workout History</div>
+                        <i class="fa-solid fa-chevron-right text-muted"></i>
+                    </div>
+                    <div class="setting-item">
+                        <div class="setting-label"><i class="fa-solid fa-gear text-green"></i> Settings</div>
+                        <i class="fa-solid fa-chevron-right text-muted"></i>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <nav class="bottom-nav glass-nav">
+            <button class="nav-btn active" data-target="view-dashboard"><i class="fa-solid fa-house"></i></button>
+            <button class="nav-btn" data-target="view-community"><i class="fa-solid fa-users"></i></button>
+            <button class="nav-btn fab-scan" data-target="view-scanner"><i class="fa-solid fa-expand"></i></button>
+            <button class="nav-btn" data-target="view-workout"><i class="fa-solid fa-dumbbell"></i></button>
+            <button class="nav-btn" data-target="view-profile"><i class="fa-solid fa-user"></i></button>
+        </nav>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
